@@ -11,7 +11,9 @@ function App() {
     <div className='App'>
       <div className='Container'>
         <TonConnectButton />
-
+        <h2>
+          Edward TON.
+        </h2>
         <div className='Card'>
           <b>Counter Address</b>
           <div className='Hint'>{address?.slice(0, 30) + '...'}</div>
