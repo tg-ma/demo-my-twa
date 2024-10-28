@@ -1,0 +1,26 @@
+name: Auto Copy Code to Other Branch
+ 
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的推送事件
+ 
+jobs:
+  copy-code:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+ 
+      - name: Setup Git
+        run: |
+          git config --global user.name "0x59014"
+          git config --global user.email "0x59014@gmail.com"
+      - name: Copy Code to Other Branch
+        run: |
+          git checkout -b gh-pages  # 创建并切换到新分支
+          git push origin gh-pages  # 推送新分支到远程仓库
