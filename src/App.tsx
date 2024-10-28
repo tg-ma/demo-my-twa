@@ -11,6 +11,7 @@ const transactionComment = beginCell()
   .endCell();
 
 const transaction = {
+  validUntil: 10,
   messages: [
     {
       address: "0QBAYCAHf27D45T_EId2i0QLC1CFkICL4_86QANjn1Ju0CdL", // destination address
@@ -19,9 +20,12 @@ const transaction = {
     },
   ],
 };
-const { initDataRaw } = retrieveLaunchParams();
 
-alert("initDataRaw:" + initDataRaw);
+const getInitData = () => {
+  const { initDataRaw } = retrieveLaunchParams();
+  alert("initDataRaw:" + initDataRaw);
+};
+
 function App() {
   const { connected } = useTonConnect();
   const { value, address, sendIncrement } = useCounterContract();
@@ -58,6 +62,15 @@ function App() {
           }}
         >
           Send Ton
+        </a>
+
+        <a
+          className="Active"
+          onClick={() => {
+            getInitData();
+          }}
+        >
+          getInitData
         </a>
       </div>
     </div>
